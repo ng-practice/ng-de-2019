@@ -5,6 +5,6 @@ import { TodoCheckComponent } from './todo-check/todo-check.component';
 @NgModule({
   declarations: [TodoCheckComponent],
   imports: [CommonModule],
-  exports: [TodoCheckComponents]
+  exports: [TodoCheckComponent]
 })
 export class TodosModule {}
