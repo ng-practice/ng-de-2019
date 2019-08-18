@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TodoCheckComponent } from './todo-check/todo-check.component';
+import { TodoCheckerComponent } from './todo-checker/todo-checker.component';
 
 @NgModule({
-  declarations: [TodoCheckComponent],
+  declarations: [TodoCheckerComponent],
   imports: [CommonModule],
-  exports: [TodoCheckComponent]
+  exports: [TodoCheckerComponent]
 })
 export class TodosModule {}
