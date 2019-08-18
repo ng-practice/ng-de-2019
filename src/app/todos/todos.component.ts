@@ -15,4 +15,19 @@ export class TodosComponent {
   addTodo(newTodo: Todo) {
     this.todos = [newTodo, ...this.todos];
   }
+
+  completeOrIncompleteTodo(todoForUpdate: Todo) {
+    this.todos = this.todos.map(todo =>
+      todo.text === todoForUpdate.text
+        ? this.toggleTodoState(todoForUpdate)
+        : todo
+    );
+  }
+
+  private toggleTodoState(todoForUpdate: Todo): any {
+    return {
+      ...todoForUpdate,
+      isDone: todoForUpdate.isDone ? false : true
+    };
+  }
 }
