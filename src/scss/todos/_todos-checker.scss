@@ -1,6 +1,6 @@
 @import './todos-colours';
 
-.todo--label {
+.todo__label {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -13,7 +13,7 @@
   -ms-user-select: none;
   user-select: none;
 
-  &:hover input ~ .todo--checkmark {
+  &:hover input ~ .todo__checkmark {
     background-color: $control-background-color;
   }
 
@@ -24,22 +24,22 @@
     height: 0;
     width: 0;
 
-    &:checked ~ .todo--checkmark {
+    &:checked ~ .todo__checkmark {
       background-color: $primary;
     }
 
-    &:checked ~ .todo--checkmark:after {
+    &:checked ~ .todo__checkmark:after {
       display: block;
     }
   }
 }
 
-.todo__is-done {
+.todo--is-done {
   font-style: italic;
   text-decoration: line-through;
 }
 
-.todo--checkmark {
+.todo__checkmark {
   position: absolute;
   top: 0;
   left: 0;
