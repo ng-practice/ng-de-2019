@@ -6,7 +6,6 @@ import { TodosModule } from './todos/todos.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, TodosModule],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
