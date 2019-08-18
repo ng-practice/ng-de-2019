@@ -1,2 +1,11 @@
-<input type="text" class="todo__input" placeholder="What needs to be done?" />
-<button class="todo__button--primary">Add</button>
+<input
+  #todoTextInput
+  type="text"
+  class="todo__input"
+  placeholder="What needs to be done?"
+  (change)="emitCreate(todoTextInput)"
+/>
+
+<button (click)="emitCreate(todoTextInput)" class="todo__button--primary">
+  Add
+</button>

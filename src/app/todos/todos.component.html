@@ -1,3 +1,3 @@
 <h1 class="todo__h1">todos</h1>
-<nde-todo-quick-add></nde-todo-quick-add>
-<nde-todos-list></nde-todos-list>
+<nde-todo-quick-add (create)="addTodo($event)"></nde-todo-quick-add>
+<nde-todo-checker [todo]="todo" *ngFor="let todo of todos"></nde-todo-checker>
