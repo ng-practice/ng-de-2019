@@ -6,6 +6,6 @@ import { TodoQuickAddComponent } from './todo-quick-add/todo-quick-add.component
 @NgModule({
   declarations: [TodoCheckerComponent, TodoQuickAddComponent],
   imports: [CommonModule],
-  exports: [TodoCheckerComponent]
+  exports: [TodoCheckerComponent, TodoQuickAddComponent]
 })
 export class TodosModule {}
