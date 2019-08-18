@@ -12,6 +12,10 @@ export class TodosComponent {
     { text: 'Go running', isDone: true }
   ];
 
+  get activeTodos() {
+    return this.todos.filter(todo => !todo.isDone).length;
+  }
+
   addTodo(newTodo: Todo) {
     this.todos = [newTodo, ...this.todos];
   }

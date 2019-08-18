@@ -1,3 +1,14 @@
+@import './todo-colours';
+
 .todo__h1 {
   font: 300 40px Roboto, sans-serif;
+}
+
+.todo__text--emphasize {
+  font-weight: 700;
+  color: $primary;
+  padding-right: 4px;
+}
+.todo__text--default {
+  color: $text-color;
 }
