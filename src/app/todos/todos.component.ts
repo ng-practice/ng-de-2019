@@ -24,6 +24,10 @@ export class TodosComponent {
     );
   }
 
+  removeTodo(todoForRemoval: Todo) {
+    this.todos = this.todos.filter(todo => todo.text !== todoForRemoval.text);
+  }
+
   private toggleTodoState(todoForUpdate: Todo): any {
     return {
       ...todoForUpdate,

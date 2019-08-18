@@ -1,5 +1,13 @@
 @import './todo-colours';
 
+.todo {
+  position: relative;
+
+  &:hover .todo__delete {
+    opacity: 1;
+  }
+}
+
 .todo__label {
   display: block;
   position: relative;
@@ -9,9 +17,6 @@
   cursor: pointer;
   color: $text-color;
   font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 
   &:hover input ~ .todo__checkmark {
@@ -59,5 +64,40 @@
     border: solid white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
+  }
+}
+
+.todo__delete {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  top: -4px;
+  right: 0px;
+  width: 32px;
+  height: 32px;
+  opacity: 0;
+
+  &::hover {
+    opacity: 1;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
   }
 }
