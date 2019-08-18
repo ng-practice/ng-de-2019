@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from './todos/models';
 
 @Component({
   selector: 'nde-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todos';
+  todo: Todo = { text: 'Have fun', isDone: true };
+
+  completeOrIncomplete(todo: Todo) {
+    todo.isDone = todo.isDone ? false : true;
+  }
 }

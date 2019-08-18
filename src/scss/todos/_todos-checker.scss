@@ -34,6 +34,11 @@
   }
 }
 
+.todo__is-done {
+  font-style: italic;
+  text-decoration: line-through;
+}
+
 .todo--checkmark {
   position: absolute;
   top: 0;
