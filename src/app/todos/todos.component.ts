@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Todo } from './models';
@@ -13,6 +13,8 @@ export class TodosComponent implements OnInit, OnDestroy {
   private sink = new Subscription();
 
   todos: Todo[] = [];
+
+  @HostBinding('class') cssClass = 'todo__app';
 
   constructor(private todosService: TodosService) {}
 
