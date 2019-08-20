@@ -3,7 +3,7 @@
   type="text"
   class="todo__input"
   placeholder="What needs to be done?"
-  (change)="emitCreate(todoTextInput)"
+  (keydown.enter)="emitCreate(todoTextInput)"
 />
 
 <button (click)="emitCreate(todoTextInput)" class="todo__button--primary">
