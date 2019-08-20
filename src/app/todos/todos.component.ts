@@ -1,41 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Todo } from './models';
+import { TodosService } from './shared/todos.service';
 
 @Component({
   selector: 'nde-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
-export class TodosComponent {
-  todos: Todo[] = [
-    { text: 'Buy milk', isDone: false },
-    { text: 'Go running', isDone: true }
-  ];
+export class TodosComponent implements OnInit, OnDestroy {
+  private sink = new Subscription();
+
+  todos: Todo[] = [];
+
+  constructor(private todosService: TodosService) {}
+
+  ngOnInit(): void {
+    this.sink.add(
+      this.todosService.query().subscribe(todos => (this.todos = todos))
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.sink.unsubscribe();
+  }
 
   get activeTodos() {
     return this.todos.filter(todo => !todo.isDone).length;
   }
 
   addTodo(newTodo: Todo) {
-    this.todos = [newTodo, ...this.todos];
+    this.sink.add(
+      this.todosService
+        .create(newTodo)
+        .pipe(switchMap(() => this.todosService.query()))
+        .subscribe(todos => (this.todos = todos))
+    );
   }
 
   completeOrIncompleteTodo(todoForUpdate: Todo) {
-    this.todos = this.todos.map(todo =>
-      todo.text === todoForUpdate.text
-        ? this.toggleTodoState(todoForUpdate)
-        : todo
+    this.sink.add(
+      this.todosService
+        .completeOrIncomplete(todoForUpdate)
+        .pipe(switchMap(() => this.todosService.query()))
+        .subscribe(todos => (this.todos = todos))
     );
   }
 
   removeTodo(todoForRemoval: Todo) {
-    this.todos = this.todos.filter(todo => todo.text !== todoForRemoval.text);
-  }
-
-  private toggleTodoState(todoForUpdate: Todo): any {
-    return {
-      ...todoForUpdate,
-      isDone: todoForUpdate.isDone ? false : true
-    };
+    this.sink.add(
+      this.todosService
+        .remove(todoForRemoval)
+        .pipe(switchMap(() => this.todosService.query()))
+        .subscribe(todos => (this.todos = todos))
+    );
   }
 }
