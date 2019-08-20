@@ -5,13 +5,15 @@ import { TodoCounterComponent } from './todo-counter/todo-counter.component';
 import { TodoQuickAddComponent } from './todo-quick-add/todo-quick-add.component';
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';
+import { TodosLinkNavigationComponent } from './todos-link-navigation/todos-link-navigation.component';
 
 @NgModule({
   declarations: [
     TodoCheckerComponent,
     TodoQuickAddComponent,
     TodosComponent,
-    TodoCounterComponent
+    TodoCounterComponent,
+    TodosLinkNavigationComponent
   ],
   imports: [CommonModule, TodosRoutingModule],
   exports: [TodosComponent]

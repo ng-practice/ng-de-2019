@@ -13,3 +13,20 @@
 .todo__text--default {
   color: $text-color;
 }
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &::visited {
+    color: $primary;
+  }
+
+  &::hover {
+    text-decoration: underline;
+  }
+}
+
+.todo__link--active {
+  text-decoration: underline;
+}
