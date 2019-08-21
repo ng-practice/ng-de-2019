@@ -1,39 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Todo } from '../models';
+
+const todosUrl = 'http://localhost:3000/todos';
 
 @Injectable({ providedIn: 'root' })
 export class TodosService {
-  todos: Todo[] = [
-    { text: 'Buy milk', isDone: false },
-    { text: 'Go running', isDone: true }
-  ];
-
   constructor(private http: HttpClient) {}
 
   query(): Observable<Todo[]> {
-    return of(this.todos);
+    return this.http.get<Todo[]>(todosUrl);
   }
 
   create(todo: Todo): Observable<Todo> {
-    this.todos = [todo, ...this.todos];
-    return of(todo);
+    return this.http.post<Todo>(todosUrl, todo);
   }
 
   remove(todoForRemoval: Todo): Observable<Todo> {
-    this.todos = this.todos.filter(todo => todo.text !== todoForRemoval.text);
-    return of(todoForRemoval);
+    return this.http.delete<Todo>(`${todosUrl}/${todoForRemoval.id}`);
   }
 
   completeOrIncomplete(todoForUpdate: Todo): Observable<Todo> {
-    this.todos = this.todos.map(todo =>
-      todo.text === todoForUpdate.text
-        ? this.toggleTodoState(todoForUpdate)
-        : todo
-    );
-
-    return of(todoForUpdate);
+    const updatedTodo = this.toggleTodoState(todoForUpdate);
+    return this.http.put<Todo>(`${todosUrl}/${todoForUpdate.id}`, updatedTodo);
   }
 
   private toggleTodoState(todoForUpdate: Todo): any {
