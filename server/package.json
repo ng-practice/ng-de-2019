@@ -4,7 +4,7 @@
   "description": "backend of todos app",
   "main": "index.js",
   "scripts": {
-    "start": "json-server todos-db.json"
+    "start": "json-server --watch todos-db.json --routes routes.json"
   },
   "author": "",
   "license": "ISC",
