@@ -1,0 +1,5 @@
+{
+  "/todos\\?query=all": "/todos",
+  "/todos\\?query=active": "/todos?isDone=false",
+  "/todos\\?query=complete": "/todos?isDone=true"
+}
