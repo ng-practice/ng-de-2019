@@ -85,3 +85,5 @@ npm start
 
 ![Angular CLI Output](./docs/json-db-output.png)
 _The output of a successfully started backend_
+
+📖️ Please see the [server README](./server/README.md) for an API documentation.
