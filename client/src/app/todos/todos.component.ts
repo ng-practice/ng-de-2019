@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Todo } from './models';
@@ -16,11 +17,18 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   @HostBinding('class') cssClass = 'todo__app';
 
-  constructor(private todosService: TodosService) {}
+  constructor(
+    private todosService: TodosService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.sink.add(
-      this.todosService.query().subscribe(todos => (this.todos = todos))
+      this.route.queryParamMap
+        .pipe(
+          switchMap(paramMap => this.todosService.query(paramMap.get('query')))
+        )
+        .subscribe(todos => (this.todos = todos))
     );
   }
 

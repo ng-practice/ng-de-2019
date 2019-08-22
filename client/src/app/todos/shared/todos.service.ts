@@ -9,8 +9,8 @@ const todosUrl = 'http://localhost:3000/todos';
 export class TodosService {
   constructor(private http: HttpClient) {}
 
-  query(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(todosUrl);
+  query(param?: string): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${todosUrl}?query=${param ? param : 'all'}`);
   }
 
   create(todo: Todo): Observable<Todo> {
