@@ -49,12 +49,12 @@ List with one active and one completed todo:
   {
     "id": 123,
     "text": "Go running",
-    "isDone": false
+    "completed": false
   },
   {
     "id": 456,
     "text": "Buy milk",
-    "isDone": true
+    "completed": true
   }
 ]
 ```
@@ -63,8 +63,8 @@ List with one active and one completed todo:
 
 You can filter the todo list by using `query` parameter:
 
-- `/todos?query=active`: only return active (i.e. `"isDone"` is false) todos
-- `/todos?query=complete`: only return completed (i.e. `"isDone"` is true) todos
+- `/todos?query=active`: only return active (i.e. `"completed"` is false) todos
+- `/todos?query=complete`: only return completed (i.e. `"completed"` is true) todos
 - `/todos?query=all`: return the whole list; this is equal to omitting the query parameter
 
 ## Create New Todo
@@ -80,7 +80,7 @@ The newly created todo:
 ```json
 {
   "text": "Follow trainers on Twitter",
-  "isDone": false
+  "completed": false
 }
 ```
 
@@ -98,7 +98,7 @@ The newly created todo:
 {
   "id": 789,
   "text": "Follow trainers on Twitter",
-  "isDone": false
+  "completed": false
 }
 ```
 
@@ -122,7 +122,7 @@ Set todo with id 789 to done:
 ```json
 {
   "text": "Follow trainers on Twitter",
-  "isDone": true
+  "completed": true
 }
 ```
 
@@ -138,7 +138,7 @@ The edited todo:
 {
   "id": 789,
   "text": "Follow trainers on Twitter",
-  "isDone": true
+  "completed": true
 }
 ```
 

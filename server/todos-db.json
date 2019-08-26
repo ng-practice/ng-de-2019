@@ -2,12 +2,12 @@
   "todos": [
     {
       "text": "Buy milk",
-      "isDone": false,
+      "completed": false,
       "id": 1
     },
     {
       "text": "Go running",
-      "isDone": true,
+      "completed": true,
       "id": 2
     }
   ]
