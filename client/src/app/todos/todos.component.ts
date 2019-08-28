@@ -24,7 +24,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sink.add(
-      this.route.queryParamMap
+      this.route.paramMap
         .pipe(
           switchMap(paramMap => this.todosService.query(paramMap.get('query')))
         )
