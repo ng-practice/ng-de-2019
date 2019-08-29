@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-checker.component.scss']
 })
 export class TodoCheckerComponent implements OnInit {
+  todo = {
+    text: 'Buy 🥛',
+    isDone: true
+  };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  emitToggle() {
+    alert(`${this.todo.text} was clicked.`);
   }
 
+  ngOnInit() {}
 }
