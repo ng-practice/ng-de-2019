@@ -1,24 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Todo } from '../models/todo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodosService {
-  getAllTodos(): Todo[] {
-    return [
-      {
-        text: 'Buy 🥛',
-        isDone: true
-      },
-      {
-        text: 'Plant 🌳',
-        isDone: true
-      },
-      {
-        text: 'Build 🏡',
-        isDone: false
-      }
-    ];
+  constructor(private http: HttpClient) {}
+
+  query(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('http://localhost:3000/todos');
   }
 }

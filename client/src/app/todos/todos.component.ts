@@ -9,11 +9,14 @@ import { TodosService } from './shared/todos.service';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[];
+  hasError = false;
 
   constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {
-    this.todos = this.todosService.getAllTodos();
+    this.todosService
+      .query()
+      .subscribe(todos => (this.todos = todos), () => (this.hasError = true));
   }
 
   addTodo(todo: Todo) {
