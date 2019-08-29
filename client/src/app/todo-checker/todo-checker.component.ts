@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'nde-todo-checker',
@@ -6,15 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-checker.component.scss']
 })
 export class TodoCheckerComponent implements OnInit {
-  todo = {
-    text: 'Buy 🥛',
-    isDone: true
-  };
+  @Input() todo;
+  @Output() toggle = new EventEmitter();
 
   constructor() {}
 
   emitToggle() {
-    alert(`${this.todo.text} was clicked.`);
+    this.toggle.emit(this.todo);
   }
 
   ngOnInit() {}

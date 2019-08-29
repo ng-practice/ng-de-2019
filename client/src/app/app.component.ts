@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Your';
-  myHobby = 'Go 🏃‍♂️ with Markus.';
+  todo = {
+    text: 'Buy 🥛',
+    isDone: true
+  };
+
+  notify(todo) {
+    alert(`${todo.text} was clicked.`);
+  }
 }
