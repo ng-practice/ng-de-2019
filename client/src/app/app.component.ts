@@ -22,6 +22,10 @@ export class AppComponent {
     }
   ];
 
+  addTodo(todo: Todo) {
+    this.todos = [...this.todos, todo];
+  }
+
   checkOrUncheckTodo(todoForUpdate: Todo): void {
     this.todos = this.todos.map(todo =>
       todo.text === todoForUpdate.text
