@@ -1,6 +1,6 @@
 <div class="todo">
   <label class="todo__label">
-    {{ todo.text }}
+    <span [class.todo--is-done]="todo.isDone">{{ todo.text }}</span>
     <input type="checkbox" [checked]="todo.isDone" (change)="emitToggle()" />
     <span class="todo__checkmark"></span>
   </label>
