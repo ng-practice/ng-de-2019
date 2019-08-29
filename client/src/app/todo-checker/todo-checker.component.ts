@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Todo } from '../models/todo';
 
 @Component({
   selector: 'nde-todo-checker',
@@ -6,8 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./todo-checker.component.scss']
 })
 export class TodoCheckerComponent implements OnInit {
-  @Input() todo;
-  @Output() toggle = new EventEmitter();
+  @Input() todo: Todo;
+  @Output() toggle = new EventEmitter<Todo>();
 
   constructor() {}
 

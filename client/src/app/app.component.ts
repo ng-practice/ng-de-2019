@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from './models/todo';
 
 @Component({
   selector: 'nde-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  todos = [
+  todos: Todo[] = [
     {
       text: 'Buy 🥛',
       isDone: true
@@ -21,7 +22,7 @@ export class AppComponent {
     }
   ];
 
-  checkOrUncheckTodo(todoForUpdate) {
+  checkOrUncheckTodo(todoForUpdate: Todo): void {
     this.todos = this.todos.map(todo =>
       todo.text === todoForUpdate.text
         ? { ...todo, isDone: !todo.isDone }
