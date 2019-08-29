@@ -16,6 +16,10 @@ Kind Regards
 [markus]: https://twitter.com/_der_markusende
 [gregor]: https://twitter.com/gregonnet
 
+## Slides
+
+👩‍🏫 The [slides](https://speakerdeck.com/gregonnet/angular-solid-foundations-ng-de19) to this workshop can be found at [speakerdeck.com](https://speakerdeck.com/gregonnet/angular-solid-foundations-ng-de19).
+
 ## Prerequisites
 
 ### Tools
