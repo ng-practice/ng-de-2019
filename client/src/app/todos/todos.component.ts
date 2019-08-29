@@ -1,26 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from './models/todo';
+import { TodosService } from './shared/todos.service';
 
 @Component({
   selector: 'nde-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
-export class TodosComponent {
-  todos: Todo[] = [
-    {
-      text: 'Buy 🥛',
-      isDone: true
-    },
-    {
-      text: 'Plant 🌳',
-      isDone: true
-    },
-    {
-      text: 'Build 🏡',
-      isDone: false
-    }
-  ];
+export class TodosComponent implements OnInit {
+  todos: Todo[];
+
+  constructor(private todosService: TodosService) {}
+
+  ngOnInit(): void {
+    this.todos = this.todosService.getAllTodos();
+  }
 
   addTodo(todo: Todo) {
     this.todos = [...this.todos, todo];
