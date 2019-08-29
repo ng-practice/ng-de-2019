@@ -12,4 +12,19 @@ export class TodosService {
   query(): Observable<Todo[]> {
     return this.http.get<Todo[]>('http://localhost:3000/todos');
   }
+
+  create(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>('http://localhost:3000/todos', todo);
+  }
+
+  update(todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>(`http://localhost:3000/todos/${todo.id}`, {
+      ...todo,
+      isDone: !todo.isDone
+    });
+  }
+
+  delete(todo: Todo): Observable<Todo> {
+    return this.http.delete<Todo>(`http://localhost:3000/todos/${todo.id}`);
+  }
 }

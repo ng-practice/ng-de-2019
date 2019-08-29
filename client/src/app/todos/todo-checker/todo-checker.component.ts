@@ -9,11 +9,16 @@ import { Todo } from '../models/todo';
 export class TodoCheckerComponent implements OnInit {
   @Input() todo: Todo;
   @Output() toggle = new EventEmitter<Todo>();
+  @Output() delete = new EventEmitter<Todo>();
 
   constructor() {}
 
   emitToggle() {
     this.toggle.emit(this.todo);
+  }
+
+  emitDelete() {
+    this.delete.emit(this.todo);
   }
 
   ngOnInit() {}

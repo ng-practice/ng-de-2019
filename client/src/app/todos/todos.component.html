@@ -1,10 +1,11 @@
 <div *ngIf="hasError" class="error">
-  Sorry, the todos could not be loaded
+  Sorry, the todos could not be loaded.
 </div>
 
-<nde-todo-quick-add (create)="addTodo($event)"></nde-todo-quick-add>
+<nde-todo-quick-add (create)="createTodo($event)"></nde-todo-quick-add>
 <nde-todo-checker
   [todo]="todo"
-  (toggle)="checkOrUncheckTodo($event)"
+  (toggle)="updateTodo($event)"
+  (delete)="deleteTodo($event)"
   *ngFor="let todo of todos"
 ></nde-todo-checker>

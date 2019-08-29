@@ -3,5 +3,6 @@
     <span [class.todo--is-done]="todo.isDone">{{ todo.text }}</span>
     <input type="checkbox" [checked]="todo.isDone" (change)="emitToggle()" />
     <span class="todo__checkmark"></span>
+    <span (click)="emitDelete()" class="todo__delete"></span>
   </label>
 </div>

@@ -19,15 +19,15 @@ export class TodosComponent implements OnInit {
       .subscribe(todos => (this.todos = todos), () => (this.hasError = true));
   }
 
-  addTodo(todo: Todo) {
-    this.todos = [...this.todos, todo];
+  createTodo(todo: Todo) {
+    this.todosService.create(todo).subscribe();
   }
 
-  checkOrUncheckTodo(todoForUpdate: Todo): void {
-    this.todos = this.todos.map(todo =>
-      todo.text === todoForUpdate.text
-        ? { ...todo, isDone: !todo.isDone }
-        : todo
-    );
+  updateTodo(todo: Todo) {
+    this.todosService.update(todo).subscribe();
+  }
+
+  deleteTodo(todo: Todo) {
+    this.todosService.delete(todo).subscribe();
   }
 }
