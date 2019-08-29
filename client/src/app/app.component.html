@@ -1,1 +1,5 @@
-<nde-todo-checker [todo]="todo" (toggle)="notify($event)"></nde-todo-checker>
+<nde-todo-checker
+  [todo]="todo"
+  (toggle)="checkOrUncheckTodo($event)"
+  *ngFor="let todo of todos"
+></nde-todo-checker>

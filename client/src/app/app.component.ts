@@ -6,12 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  todo = {
-    text: 'Buy 🥛',
-    isDone: true
-  };
+  todos = [
+    {
+      text: 'Buy 🥛',
+      isDone: true
+    },
+    {
+      text: 'Plant 🌳',
+      isDone: true
+    },
+    {
+      text: 'Build 🏡',
+      isDone: false
+    }
+  ];
 
-  notify(todo) {
-    alert(`${todo.text} was clicked.`);
+  checkOrUncheckTodo(todoForUpdate) {
+    this.todos = this.todos.map(todo =>
+      todo.text === todoForUpdate.text
+        ? { ...todo, isDone: !todo.isDone }
+        : todo
+    );
   }
 }
