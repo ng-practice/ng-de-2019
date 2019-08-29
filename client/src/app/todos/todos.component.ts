@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import { Todo } from './models/todo';
 import { TodosService } from './shared/todos.service';
 
@@ -20,14 +21,23 @@ export class TodosComponent implements OnInit {
   }
 
   createTodo(todo: Todo) {
-    this.todosService.create(todo).subscribe();
+    this.todosService
+      .create(todo)
+      .pipe(switchMap(() => this.todosService.query()))
+      .subscribe(todos => (this.todos = todos));
   }
 
   updateTodo(todo: Todo) {
-    this.todosService.update(todo).subscribe();
+    this.todosService
+      .update(todo)
+      .pipe(switchMap(() => this.todosService.query()))
+      .subscribe(todos => (this.todos = todos));
   }
 
   deleteTodo(todo: Todo) {
-    this.todosService.delete(todo).subscribe();
+    this.todosService
+      .delete(todo)
+      .pipe(switchMap(() => this.todosService.query()))
+      .subscribe(todos => (this.todos = todos));
   }
 }
