@@ -1,5 +1,9 @@
 ## Angular solid foundations - from zero to hero
 
+<div align="center">
+  <img src="docs/logo.svg" alt="NG-DE Logo" width="250">
+</div>
+
 > https://ng-de.org/workshops/angular-solid-foundations/
 
 Hello 👋,
